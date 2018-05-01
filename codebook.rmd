@@ -1,0 +1,128 @@
+---
+title: "HAR run_analyses"
+author: "Henk van Essen"
+date: "1 mei 2018"
+output: html_document
+---
+
+# Human Activity Recognition Using Smartphones Data Set - Code book
+
+## Description of the used data set
+This data set is based on the Human Activity Recognition (HAR) database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.
+More information about this data set, as well as the set itself can be found here: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones  
+
+The version of the used data set was 1.0  
+
+This data set was created by:  
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.  
+Smartlab - Non Linear Complex Systems Laboratory  
+
+From this data the averages per subject and activity were calculated of the values in the section below, called "Variable descriptions". This is a subset of all available variables.
+ 
+## Data files used
+The following files from the UCI HAR data set were used:
+
+[features.txt](Data/UCI HAR Dataset/features.txt) - Which lists all features, and is used to identify the dataset data columns.  
+[train/subject_train.txt](Data/UCI HAR Dataset/train/subject_train.txt) - Which identifies the subject that performed the training activity for each window sample.  
+[train/X_train.txt](Data/UCI HAR Dataset/train/X_train.txt) - Which contains the training dataset.  
+[train/y_train.txt](Data/UCI HAR Dataset/train/y_train.txt) - Which contains the training dataset labels, used to identify the activity performed for each window sample. Labels are linked to data in [activity_labels.txt](Data/UCI HAR Dataset/activity_labels.txt).  
+[test/subject_test.txt](Data/UCI HAR Dataset/test/subject_test.txt) - Which identifies the subject that performed the test activity for each window sample.  
+[test/X_test.txt](Data/UCI HAR Dataset/test/X_test.txt) - Which contains the test dataset.  
+[test/y_test.txt](Data/UCI HAR Dataset/test/y_test.txt) - Which contains the test dataset labels, used to identify the activity performed for each window sample. Labels are linked to data in [activity_labels.txt](Data/UCI HAR Dataset/activity_labels.txt).  
+[activity_labels.txt](Data/UCI HAR Dataset/activity_labels.txt) - Which links the class labels with their activity name.  
+
+# Data processing, tidying, and summarizing
+The run_analysis.R script downloads the HAR dataset, tidies it, performs various required data manipulations, and summaries it.
+
+The script flow is as follows:
+
+1. Create a data directory  
+2. Download the Human Activity Recognition dataset and unzip it  
+3. Load the features table and detect mean and standard deviation columns  
+4. Find features to select  
+5. Define tidy names for selected features  
+6. Load training data, select wanted features, add column names and add columns for subject-id, activity-id  
+7. Load test data, select wanted features, add column names and add columns for subject-id, activity-id  
+8. Merge train and test data and replace activiy-id by readable activity  
+9. Create nice summary  
+10. Write tidy summary to a csv-file called "HAR_avg_per_subject_and_activity.csv"
+
+# Variable descriptions
+The descriptions of the variables in the HAR_avg_per_subject_and_activity.csv file
+
+## Identifiers
+subject.id - The subject identifier  
+activity - The motion activity  
+
+## Time domain variables
+Time.Body.Acc.Jerk.Mag.Mean - The mean of the resultant XYZ jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Jerk.Mag.Std - The standard deviation of the resultant XYZ jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Jerk.Mean.X - The mean of the X jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Jerk.Mean.Y - The mean of the Y jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Jerk.Mean.Z - The mean of the Z jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Jerk.Std.X - The standard deviation of the X jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Jerk.Std.Y - The standard deviation of the Y jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Jerk.Std.Z - The standard deviation of the Z jerk from an accelerometer signal related to body motion  
+Time.Body.Acc.Mag.Mean - The mean of the resultant XYZ acceleration from an accelerometer signal related to body motion  
+Time.Body.Acc.Mag.Std - The standard deviation of the resultant XYZ acceleration from an accelerometer signal related to body motion  
+Time.Body.Acc.Mean.X - The mean of the X acceleration from an accelerometer signal related to body motion  
+Time.Body.Acc.Mean.Y - The mean of the Y acceleration from an accelerometer signal related to body motion  
+Time.Body.Acc.Mean.Z - The mean of the Z acceleration from an accelerometer signal related to body motion  
+Time.Body.Acc.Std.X - The standard deviation of the X acceleration from an accelerometer signal related to body motion  
+Time.Body.Acc.Std.Y - The standard deviation of the Y acceleration from an accelerometer signal related to body motion  
+Time.Body.Acc.Std.Z - The standard deviation of the Z acceleration from an accelerometer signal related to body motion  
+Time.Body.Gyro.Jerk.Mag.Mean - The mean of the resultant XYZ jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Jerk.Mag.Std - The standard deviation of the resultant XYZ jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Jerk.Mean.X - The mean of the X jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Jerk.Mean.Y - The mean of the Y jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Jerk.Mean.Z - The mean of the Z jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Jerk.Std.X - The standard deviation of the X jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Jerk.Std.Y - The standard deviation of the Y jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Jerk.Std.Z - The standard deviation of the Z jerk from a gyroscope signal related to body motion  
+Time.Body.Gyro.Mag.Mean - The mean of the resultant XYZ angular velocity from a gyroscope signal related to body motion  
+Time.Body.Gyro.Mag.Std - The standard deviation of the resultant XYZ angular velocity from a gyroscope signal related to body motion  
+Time.Body.Gyro.Mean.X - The mean of the X angular velocity from a gyroscope signal related to body motion  
+Time.Body.Gyro.Mean.Y - The mean of the Y angular velocity from a gyroscope signal related to body motion  
+Time.Body.Gyro.Mean.Z - The mean of the Z angular velocity from a gyroscope signal related to body motion  
+Time.Body.Gyro.Std.X - The standard deviation of the X angular velocity from a gyroscope signal related to body motion  
+Time.Body.Gyro.Std.Y - The standard deviation of the Y angular velocity from a gyroscope signal related to body motion  
+Time.Body.Gyro.Std.Z - The standard deviation of the Z angular velocity from a gyroscope signal related to body motion  
+Time.Gravity.Acc.Mag.Mean - The mean of the resultant XYZ acceleration from an accelerometer signal related gravity  
+Time.Gravity.Acc.Mag.Std - The standard deviation of the resultant XYZ acceleration from an accelerometer signal related gravity  
+Time.Gravity.Acc.Mean.X - The mean of the X acceleration from an accelerometer signal related gravity  
+Time.Gravity.Acc.Mean.Y - The mean of the Y acceleration from an accelerometer signal related gravity  
+Time.Gravity.Acc.Mean.Z - The mean of the Z acceleration from an accelerometer signal related gravity  
+Time.Gravity.Acc.Std.X - The standard deviation of the X acceleration from an accelerometer signal related gravity  
+Time.Gravity.Acc.Std.Y - The standard deviation of the Y acceleration from an accelerometer signal related gravity  
+Time.Gravity.Acc.Std.Z - The standard deviation of the Z acceleration from an accelerometer signal related gravity  
+
+## Frequency domain variables
+Frequency.Body.Acc.Jerk.Mag.Mean - The mean of a Fourier transformed resultant XYZ signal (Euclidean norm) jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Jerk.Mag.Std - The standard deviation of a Fourier transformed resultant XYZ signal (Euclidean norm) jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Jerk.Mean.X - The mean of a Fourier transformed X signal jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Jerk.Mean.Y - The mean of a Fourier transformed Y signal jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Jerk.Mean.Z - The mean of a Fourier transformed Z signal jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Jerk.Std.X - The standard deviation of a Fourier transformed X signal jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Jerk.Std.Y - The standard deviation of a Fourier transformed Y signal jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Jerk.Std.Z - The standard deviation of a Fourier transformed Z signal jerk from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Mag.Mean - The mean of a Fourier transformed resultant XYZ signal (Euclidean norm) acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Mag.Std - The standard deviation of a Fourier transformed resultant XYZ signal (Euclidean norm) acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Mean.X - The mean of a Fourier transformed X signal acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Mean.Y - The mean of a Fourier transformed Y signal acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Mean.Z - The mean of a Fourier transformed Z signal acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Std.X - The standard deviation of a Fourier transformed X signal acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Std.Y - The standard deviation of a Fourier transformed Y signal acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Acc.Std.Z - The standard deviation of a Fourier transformed Z signal acceleration from an accelerometer signal related to body motion  
+Frequency.Body.Gyro.Jerk.Mag.Mean - The mean of a Fourier transformed resultant XYZ signal (Euclidean norm) jerk from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Jerk.Mag.Std - The standard deviation of a Fourier transformed resultant XYZ signal (Euclidean norm) jerk from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Mag.Mean - The mean of a Fourier transformed resultant XYZ signal (Euclidean norm) angular velocity from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Mag.Std - The standard deviation of a Fourier transformed resultant XYZ signal (Euclidean norm) angular velocity from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Mean.X - The mean of a Fourier transformed X signal angular velocity from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Mean.Y - The mean of a Fourier transformed Y signal angular velocity from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Mean.Z - The mean of a Fourier transformed Z signal angular velocity from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Std.X - The standard deviation of a Fourier transformed X signal angular velocity from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Std.Y - The standard deviation of a Fourier transformed Y signal angular velocity from a gyroscope signal related to body motion  
+Frequency.Body.Gyro.Std.Z - The standard deviation of a Fourier transformed Z signal angular velocity from a gyroscope signal related to body motion  
+
+## Notes 
+Features are normalized and bounded within [-1,1].  

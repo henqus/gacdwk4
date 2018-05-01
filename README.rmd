@@ -1,0 +1,34 @@
+---
+title: "README"
+author: "Henk van Essen"
+date: "1 mei 2018"
+output: html_document
+---
+### Coursera - Getting and Cleaning Data - Course Project
+
+This repository was created as the Course Project of the Coursera Getting and Cleaning Data course.  
+Henk van Essen  
+Version 1.0  
+
+### Purpose
+The purpose of this project is to demonstrate the students ability to collect, work with, and clean a data set.
+
+### Used data set
+For this project the Human Activity Recognition Using Smartphones Data Set (HAR) was used. Information about this data set can be found here: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones  
+
+### run_analyses.R cript in R
+The R script run_analysis that does the following:  
+1. Merges the training and the test sets to create one data set.  
+2. Extracts only the measurements on the mean and standard deviation for each measurement.  
+3. Uses descriptive activity names to name the activities in the data set.  
+4. Appropriately labels the data set with descriptive variable names.  
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.  
+
+### Output
+Output is a file called [HAR_avg_per_subject_and_activity.csv](Data/HAR_avg_per_subject_and_activity.csv) that contains a summary of averages of measured features. The features are descirbed in the codebook. 
+
+### Reproduce results
+To reproduce the results just run the script run_analyses.R. It will download the used data set itself, unzip it and produce the output. No further action is needed.
+
+### Code Book
+The Code Book describes the parts of the HAR dataset that are manipulated and summarized.
