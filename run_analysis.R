@@ -89,7 +89,7 @@ means <- tbl_df(summarise_all(group_by(merged, subject.id, activity), funs(mean)
 
 # 10. Write tidy summary to a csv-file called “HAR_avg_per_subject_and_activity.csv”
 
-write.csv(means, "HAR_avg_per_subject_and_activity.csv",
+write.table(means, "HAR_avg_per_subject_and_activity.txt",
           row.names = FALSE)
 
 # run_analysis has FINISHED
